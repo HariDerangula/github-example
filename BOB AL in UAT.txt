@@ -1,0 +1,29 @@
+
+
+
+BOB AL in UAT
+===========================================
+1. Download customerapp.zip
+2. Upload to own cloud by using cloud link
+3. Connect to RDP, go to own cloud (It won't open) 
+ a) Go to settings -> proxy -> LAN Settings -> paste the same ip address to the LAN
+4. Refresh the own cloud page -> download the customerapp.zip 
+5. Connect to putty by using ip 172.17.127.134 -> login as : root  & password: jocata@123
+6. Go to WinSCP remote location: /root/ & local location: (Go to where the customerapp.zip is downloaded)
+7. Drag and drop customerapp.zip from local to remote
+8. Go to putty -> ll -> unzip the customerapp.zip by using following command
+    
+                   unzip customerapp.zip
+
+9. Go to customerapp ->  go to index.html (vim index.html) -> change <base href="/">   to <base href="/al/"> 
+10. Go to /var/www/html/al 
+11. Remove all the files in the al by using command  
+
+          rm -rf *
+12. copy all the files in the customerapp to al by using
+
+      cp -xvf /root/customerapp .
+
+13. Restart the httpd by using
+ 
+    systemctl restart httpd  
